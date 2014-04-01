@@ -1,0 +1,31 @@
+.edit{
+	float: right;
+}
+
+.word_list_item{
+	padding: -10px;
+	font-size: 1.2em;
+}
+
+.annotate{
+	margin-left: 20px;
+}
+
+#word_label{
+	padding: 10px;
+}
+
+#word_detail_box{
+	min-height: 200px;
+}
+
+.exampleSentence{
+	margin-left: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+#save_example{
+  margin-left: 10px;
+  padding-bottom: 10px;
+}

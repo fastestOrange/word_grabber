@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>Word Grabber
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+    rel="stylesheet">
+    <link href="spec_style.css" rel="stylesheet">
+  </head>
+  
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Word Grabber</a>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="#">My Lists</a>
+          </li>
+          <li>
+            <a href="#">All Words</a>
+          </li>
+          <li>
+            <a href="#">Create New List</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row app_wrapper">
+        <div class="col-md-4">
+          <h3>
+            Marta (3/12/14)
+          </h3>
+          <ul class="list-group">
+            <li class="word_list_item list-group-item">
+             <a href="#">Judicious</a>
+             <span class="edit btn glyphicon glyphicon-pencil"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-8">
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#pane1" data-toggle="tab">Summary</a>
+                </li>
+                <li>
+                  <a href="#pane2" data-toggle="tab">Examples</a>
+                </li>
+                <li>
+                  <a href="#pane3" data-toggle="tab">Definitions</a>
+                </li>
+                <li>
+                  <a href="#pane4" data-toggle="tab">My Notes</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="tab-content" id="word_detail_box">
+            <div class="tab-content">
+                <div id="pane1" class="tab-pane active">
+                  <h2>Redundant</h2>
+                  <h4>Summary</h4>
+                </div>
+                <div id="pane2" class="tab-pane">
+                <h4>Examples</h4>
+                  <p> </p>
+                </div>
+                <div id="pane3" class="tab-pane">
+                  <h4>Defintions</h4>
+                </div>
+                <div id="pane4" class="tab-pane">
+                  <h4>My Notes</h4>
+                </div>
+              </div>
+          </div>
+          
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <input type="text" id="word_input" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="btn-toolbar">
+                <div class="btn-group">
+                  <a href="#" id="word_input_save" class="btn btn-default">Save</a>
+                  <a href="#" class="btn btn-default">Cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row annotate">
+            <div class="btn-group">
+              <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-record"></span> Record </a>
+              <a href="#" id="new_ex_btn"class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> New Example Sentence</a>
+            </div>
+          </div>
+          <div class="form-group">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+    >
+    </script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    >
+    </script>
+    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
+    <script src="app.js"></script>
+    <script>
+    /* global $, app */
+      $(function(){
+        app.init();
+      });
+    </script>
+  </body>
+
+</html>
