@@ -8,20 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
     rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
     rel="stylesheet">
     <link href="spec_style.css" rel="stylesheet">
   </head>
   
   <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <nav id="global_nav" class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Word Grabber</a>
+        <a class="navbar-brand" style="font-weight: bold" href="#">Word Grabber</a>
       </div>
       <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
+        <ul  class="nav navbar-nav">
           <li class="active">
             <a href="#">My Lists</a>
           </li>
@@ -34,94 +37,103 @@
         </ul>
       </div>
     </nav>
-    <div class="container">
+    <div ng-app="wordList" class="container">
       <div class="row app_wrapper">
-        <div class="col-md-4">
-          <h3>
-            Marta (3/12/14)
+        <div class="col-md-3">
+          <h3 style="padding: 4px; display: block; border-bottom:1px inset black;">
+            My Lists
           </h3>
-          <ul class="list-group">
-            <li class="word_list_item list-group-item">
-             <a href="#">Judicious</a>
-             <span class="edit btn glyphicon glyphicon-pencil"></span>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-8">
-          <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-            </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-              <ul class="nav nav-tabs">
-                <li class="active">
-                  <a href="#pane1" data-toggle="tab">Summary</a>
-                </li>
-                <li>
-                  <a href="#pane2" data-toggle="tab">Examples</a>
-                </li>
-                <li>
-                  <a href="#pane3" data-toggle="tab">Definitions</a>
-                </li>
-                <li>
-                  <a href="#pane4" data-toggle="tab">My Notes</a>
-                </li>
+          <div id="links">
+              <ul>
+                <li><a href="#" title="Text">Marta #1
+                  <em>horse riding, holidays, daily routine</em>
+                  <span>Date: 2/22/13</span></a></li> 
+                <li><a href="#" title="Text">Marta #2
+                  <em>boat, the beach, holiday clothes</em>
+                  <span>Date: 3/1/13</span></a></li>
               </ul>
-            </div>
-          </nav>
-          <div class="tab-content" id="word_detail_box">
-            <div class="tab-content">
-                <div id="pane1" class="tab-pane active">
-                  <h2>Redundant</h2>
-                  <h4>Summary</h4>
-                </div>
-                <div id="pane2" class="tab-pane">
-                <h4>Examples</h4>
-                  <p> </p>
-                </div>
-                <div id="pane3" class="tab-pane">
-                  <h4>Defintions</h4>
-                </div>
-                <div id="pane4" class="tab-pane">
-                  <h4>My Notes</h4>
-                </div>
-              </div>
-          </div>
+            </div> 
+        </div>
+        <div class="appWrapper col-md-9">
           
 
-          <div class="row">
-            <div class="col-md-8">
+          <div class="row" ng-controller="Words">
+
+            <div class="col-md-7">
+              <nav class="navbar navbar-default" role="navigation">
+                <!-- <div class="navbar-header">
+                </div> -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a href="#pane1" data-toggle="tab">Annotate</a>
+                    </li>
+                    <li>
+                      <a href="#pane2" data-toggle="tab">Dictionary Entry</a>
+                    </li>
+                    <li>
+                      <a href="#pane3" data-toggle="tab">My Notes</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
               <div class="form-group">
-                <input type="text" id="word_input" class="form-control">
+                <input type="text" id="word_input" class="form-control" placeholder="Type new word and hit return">
+              </div>
+              
+              <div>
+                <h2 id="current_word"></h2>
+              </div>
+              <div class="tab-content" id="word_detail_box">
+                <div class="tab-content">
+                    <div id="pane1" class="tab-pane active">
+                      <h4>Annotate</h4>
+                      <div id="annotations"></div>
+                      <div id="appendHere"></div>
+                      <div class="annotation_buttons btn-group">
+                            <a href="#" id="user_definition" class="btn btn-default">Definition</a>
+                            <a href="#" id="create_example" class="btn btn-default">Example Sentence</a>
+                            <a href="#" id="user_video" class="btn btn-default">Video</a>
+                            <a href="#" id="user_recording" class="btn btn-default">Recording</a>
+                            <a href="#" id="word_input_clear" class="btn btn-info">Reset</a>
+                      </div>
+                      
+                      <div id="examples"></div>
+                    </div>
+                    <div id="pane2" class="tab-pane">
+                    <h4>Dictionary Entry</h4>
+                    </div>
+                    <div id="pane3" class="tab-pane">
+                      <h4>My Notes</h4>
+                    </div>
+                  </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="btn-toolbar">
-                <div class="btn-group">
-                  <a href="#" id="word_input_save" class="btn btn-default">Save</a>
-                  <a href="#" class="btn btn-default">Cancel</a>
+            <div class="col-md-5">
+              
+              <div>
+                <div class = "listHolder">
+                  <h4>Marta #1</h4>
+                  <ul class="list-group">
+                    <li ng-repeat="item in items  | orderByPriority" class="word_list_item list-group-item">
+                      <a class="word_list_word" href="#" >{{item}}</a>
+                      <span style="color: #F08080;" class="edit btn glyphicon glyphicon-remove-circle"></span>
+                      
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row annotate">
-            <div class="btn-group">
-              <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-record"></span> Record </a>
-              <a href="#" id="new_ex_btn"class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> New Example Sentence</a>
-            </div>
-          </div>
-          <div class="form-group">
           </div>
         </div>
       </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-    >
-    </script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
-    >
-    </script>
-    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="angular.js"></script>
+    <script src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
+    <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
     <script src="app.js"></script>
     <script>
     /* global $, app */
